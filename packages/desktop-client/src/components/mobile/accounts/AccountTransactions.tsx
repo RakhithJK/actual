@@ -239,9 +239,6 @@ function TransactionListWithPreviews({
     query: transactionsQuery,
   });
 
-  const { data: previewTransactions, isLoading: isPreviewTransactionsLoading } =
-    usePreviewTransactions();
-
   const dateFormat = useDateFormat() || 'MM/dd/yyyy';
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -281,6 +278,9 @@ function TransactionListWithPreviews({
     resetQuery: () => setTransactionsQuery(baseTransactionsQuery()),
     dateFormat,
   });
+
+  const { data: previewTransactions, isLoading: isPreviewTransactionsLoading } =
+    usePreviewTransactions({ options: { isDisabled: isSearching } });
 
   const onOpenTransaction = useCallback(
     (transaction: TransactionEntity) => {
