@@ -280,7 +280,7 @@ function TransactionListWithPreviews({
   });
 
   const { data: previewTransactions, isLoading: isPreviewTransactionsLoading } =
-    usePreviewTransactions({ options: { isDisabled: isSearching } });
+    usePreviewTransactions();
 
   const onOpenTransaction = useCallback(
     (transaction: TransactionEntity) => {
